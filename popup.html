@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Test popup Javascript</title>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+            /* Styles du bouton trigger */
+
+            .btn {
+                display: inline-block;
+                background-color: #4CAF50;
+                color: #fff;
+                border: none;
+                padding: 10px 20px;
+                margin-bottom: 20px;
+                cursor: pointer;
+                border-radius: 12px;
+            }
+
+            .btn:hover {
+                background-color: #45a049;
+            }
+
+            /* Style de la pop-up  */
+
+            .popup {
+                display: none;
+                position: fixed;
+                top: 0;
+                width: 100vw;
+                height: 100vh;
+            }
+
+            .popup.active {
+                display: block;
+            }
+
+            /* L'overlay */
+            .overlay {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                background: hsla(0, 0%, 20%, 0.800);
+            }
+
+            /* Style de la fenêtre modale */
+            .frame {
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+                max-width: 30vw;
+                min-width: 380px;
+                height: 55vh;
+                min-height: 490px;
+                padding: 30px;
+                background: #FFF;
+                border-radius: 5px;
+                position: absolute;
+                top: 40%;
+                left: 50%;
+                transform: translate(-50%, -40%);
+            }
+
+            /* Style du header */
+
+            .close-frame {
+                padding: 8px 10px;
+                border: none;
+                border-radius: 5px;
+                font-size: 18px;
+                position: absolute;
+                top: 10px;
+                right: 10px;
+                cursor: pointer;
+                background: #FF365E;
+                color: #FFF
+            }
+
+            .frame h1 {
+                margin-bottom: 10px;
+                font-weight: 500;
+                border-bottom: 1px solid #ccc;
+            }
+
+            .frame p {
+                line-height: 1.4;
+                margin-bottom: 0.5em;
+                text-align: justify;
+            }
+
+            .frame-footer {
+                display: flex;
+                justify-content: space-between;
+                align-items: flex-end;
+                border-top: 1px solid #ccc;
+                margin-top: auto;
+            }
+
+            .btn-submit {
+                display: inline-block;
+                background-color: #4CAF50;
+                color: #fff;
+                border: none;
+                padding: 10px 20px;
+                cursor: pointer;
+                margin-top: 2em;
+                border-radius: 12px;
+            }
+        </style>
+    </head>
+    
+    <body>
+        <div class="popup">
+            <div class="overlay popup-trigger"></div> 
+            <div class="frame">
+                <div class="frame-header">
+                    <button class="close-frame popup-trigger">X</button>
+                    <h1>Ma popup !</h1>
+                </div>
+                <div>
+                    <div class="frame-body">
+                        <p> Selon Reptarium [archive] Reptile Database [archive] (21 mai 2013)2, 
+                            cette espèce est autochtone en Afrique du Nord (au Maroc, en Algérie, en Tunisie, en Libye et en Égypte), 
+                            au Proche-Orient (en Israël, en Palestine, au Liban, en Syrie, dans le sud de la Turquie, en Irak, en Iran, en Jordanie, 
+                            en Arabie saoudite et au Yémen) et dans certains pays du sud de l'Europe (sud du Portugal, sud de l'Espagne, à Malte, en Grèce (Crète) et à Chypre). 
+                            En Italie, l'espèce est présente dans le Sud de la Calabre, où elle est allochtone3. 
+                            Son statut en Sicile est quelque peu incertain : bien que ce caméléon ait longtemps été cité dans les faunes siciliennes, 
+                            où il a un temps été introduit et noté sur l'île dès 1832, il semble ne pas avoir perduré, et seuls quelques signalements sporadiques sont recensés vers la fin du xxe siècle4.</p>
+                    </div>
+
+                    <div class="frame-footer">
+                        <div class="add-product-form div-btn-submit">
+                            <input type="submit" value="Pas mal, non ?" class="btn-submit">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> 
+
+        <button class="btn popup-trigger">Trigger popup</button>
+
+        <script>
+            function popup() {
+                var popup = document.querySelector(".popup");
+                var popupTriggers = document.querySelectorAll(".popup-trigger");
+
+                popupTriggers.forEach(trigger => {
+                    trigger.addEventListener("click", () => togglePopup(popup))
+                })
+            }
+
+            function togglePopup(popup) {
+                popup.classList.toggle("active");
+            }
+
+            popup();
+        </script>
+    </body>
+</html>
